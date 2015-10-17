@@ -1,0 +1,15 @@
+{
+  "name": "file-read-cli",
+  "version": "1.0.0",
+  "description": "cli",
+  "main": "cli.js",
+  "dependencies": {
+    "yargs": "^3.27.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ChristophWolfAnderson",
+  "license": "MIT"
+}
