@@ -1,9 +1,10 @@
 var http = require('http'); // may require https
 
-http.get('http://jsonplaceholder.typicode.com/posts', function(response) {
+http.get("http://jsonplaceholder.typicode.com/posts", function(response) {
   console.log('Response: ', response.statusCode);
   // statusCode is 200 if it worked, 404 if not found, etc.
 
+  // prints out the buffer
   response.on('data', function(data) {
     console.log(data);
   });
@@ -22,7 +23,6 @@ http.get('http://jsonplaceholder.typicode.com/posts', function(response) {
   console.log(err);
 });
 
-
-myArray.forEach(function(elem) {
-  // body...
-});
+// myArray.forEach(function(elem) {
+//   // body...
+// });

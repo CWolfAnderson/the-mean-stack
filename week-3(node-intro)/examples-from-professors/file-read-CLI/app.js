@@ -37,8 +37,3 @@ FileApp.prototype.remove = function () {
     console.log('Removed');
   });
 };
-
-
-
-
-

@@ -8,3 +8,5 @@ function read(filename) {
 }
 read('sample.txt');
 console.log('Done reading file');
+
+console.log(__filename);
