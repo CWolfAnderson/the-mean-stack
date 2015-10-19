@@ -56,9 +56,9 @@ module.exports = {
 // ————————————————————————————————————————————————————————————————————————
 /*
 1. navigate to folder in terminal
-2. ‘nam install **moduleName** —save
+2. ‘npm install **moduleName** --save
 
-uninstall: ‘nam uninstall **moduleName’ —save
+uninstall: ‘npm uninstall **moduleName’ --save
 */
 // ————————————————————————————————————————————————————————————————————————
 
@@ -66,9 +66,9 @@ uninstall: ‘nam uninstall **moduleName’ —save
 // use yargs and super agent
 
 // ————————————————————————————————————————————————————————————————————————
-
+// Display file directory:
 // ————————————————————————————————————————————————————————————————————————
-
+console.log(__filename);
 // ————————————————————————————————————————————————————————————————————————
 
 // ————————————————————————————————————————————————————————————————————————
