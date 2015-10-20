@@ -1,7 +1,7 @@
 var testModule = (function () {
 
   var counter = 0;
-
+  
   return {
 
     incrementCounter: function () {

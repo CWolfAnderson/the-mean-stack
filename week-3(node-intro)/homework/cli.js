@@ -8,15 +8,19 @@ var flags = yargs.usage("$0: Usage node cli.js")
   })
   .options("m", {
     alias: "math",
-    describe: "Get a Math Fact"
+    describe: "Get a Math Fact by entering a number"
   })
   .options("t", {
     alias: "trivia",
-    describe: "Get a Trivia Fact"
+    describe: "Get a Trivia Fact by entering a number"
   })
   .options("d", {
     alias: "date",
-    describe: "Get a Date or Year Fact"
+    describe: "Get a Date or Year Fact by entering a year in 'YYYY' or date in 'MM/DD' format"
+  })
+  .options("s", {
+    alias: "save",
+    describe: "Save your fact to JSON"
   })
   .argv; // Q1. Why do we need this .argv?
 

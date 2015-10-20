@@ -24,8 +24,7 @@ FileApp.prototype.init = function() {
   }
 };
 
-
-// to use: in terminal:
+// to use (in terminal):
 // node cli.js --write **yourFileName** "**text**"'
 FileApp.prototype.write = function() {
 
