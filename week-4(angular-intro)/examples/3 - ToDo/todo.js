@@ -1,4 +1,3 @@
-
 angular.module('todoApp', [])
   .controller('TodoCtrl', function($scope) {
 
@@ -12,6 +11,8 @@ angular.module('todoApp', [])
  
     $scope.addTodo = function() {
       $scope.todos.push({text:$scope.todoText, done:false});
+      
+      // to clear input box
       $scope.todoText = '';
     };
  

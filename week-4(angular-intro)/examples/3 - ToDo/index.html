@@ -21,8 +21,11 @@
         [ <a href="" ng-click="archive()">archive</a> ]
         
         <ul class="list-unstyled">
+          <!-- ng-repeat="todo in todos" will loop through todos (from todo.js) -->
           <li ng-repeat="todo in todos">
             <input type="checkbox" ng-model="todo.done">
+            
+            <!-- You can use angular inside attributes -->
             <span class="done-{{todo.done}}">{{todo.text}}</span>
           </li>
         </ul>

@@ -2,15 +2,16 @@ var fs = require('fs');
 var superagent = require('superagent');
 
 module.exports.run = function(flags) {
-  var fileApp = new FileApp(flags);
+  var fileApp = new FactsApp(flags);
   fileApp.init();
 };
 
-function FileApp (flags) {
+function FactsApp (flags) {
   this.flags = flags;
+  // this.base = "http://numbersapi.com"
 }
 
-FileApp.prototype.init = function() {
+FactsApp.prototype.init = function() {
   
   // 'math' comes from cli.js
   if (this.flags.math) {
@@ -40,7 +41,7 @@ FileApp.prototype.init = function() {
 
 // to use (in terminal):
 // node cli.js --math **numberHere** 
-FileApp.prototype.math = function(save) {
+FactsApp.prototype.math = function(save) {
   
   var number = this.flags.math;
   
@@ -58,7 +59,7 @@ FileApp.prototype.math = function(save) {
   
 };
 
-FileApp.prototype.trivia = function (save) {
+FactsApp.prototype.trivia = function (save) {
   
   var number = this.flags.trivia;
   
@@ -74,7 +75,34 @@ FileApp.prototype.trivia = function (save) {
   
 };
 
-FileApp.prototype.date = function(save) {
+// TODO: use base to build url
+// TODO: change .date to .getDateFact
+FactsApp.prototype.date = function (number) {
+  var url = this.base + '/';
+  var format = number.split("/");
+  
+  this.apiRequest(url);
+}
+
+FactsApp.prototype.apiRequest = funciton(url, callback) {
+  var self = this;
+  superagent.get(url)
+    .query({json: true})
+    .end(function(err, res) {
+      if (err) throw err;
+      
+      if (self.flags.save) {
+        res.body.saved = new Date();
+        self.saveFact(res.body);
+      }
+      
+      console.log(res.body.type + ": " + res.body.text);
+    });
+};
+
+// TODO: end
+
+FactsApp.prototype.date = function(save) {
   
   var input = String(this.flags.date);
   
@@ -112,6 +140,20 @@ function saveToJSON(fact, inputNumber, isFound, factType) {
   // check if file exists:
   fs.readFile("facts.json", function(err, data) {
     if  (err) {  // if file doesn't exist:
+    
+    // TODO: try-catch JSON.parse when reading file
+/*
+fs.readFile(filename, 'utf8', function (err, data) {
+try {
+var facts = JSON.parse(data);
+facts.push(fact);
+self.writeFile(filenmae, facts);
+} catch (err) {
+throw err;
+}
+});
+*/
+
     
     fs.writeFile("facts.json", JSON.stringify({text: fact, number: inputNumber, found: isFound, type: factType, saved: date}, null, 2), function(err) {
       

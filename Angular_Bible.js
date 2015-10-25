@@ -1,0 +1,1 @@
+//To initialize your app for angular by adding ng-app to <html> tag (i.e. <html ng-app>)
