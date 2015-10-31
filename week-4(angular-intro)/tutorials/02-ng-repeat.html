@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>ng-repeat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+</head>
+<body ng-init="people=[{name: 'Christoph', age: 25}, {name: 'Paris', age: 22}, {name: 'Bobby', age: 25}]">
+  
+  <ul>
+    <li ng-repeat="person in people">
+      {{person.name}} is {{person.age}}
+    </li>
+  </ul>
+  
+</body>
+</html>

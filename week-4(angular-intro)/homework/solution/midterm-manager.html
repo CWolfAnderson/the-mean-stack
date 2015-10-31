@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="midtermManager">
+<head>
+  <meta charset="UTF-8">
+  <title>Midterm Manager</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  
+</head>
+<body ng-controller="managerController">
+  
+  <div class="container">
+    
+    <h1>Midterm Manager</h1>
+    
+    <div class="row">
+      
+      <div class="col-md-4">
+        <h3>Add Group</h3>
+        Node Module: <br>
+        <form>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="groupName" placeholder="Group Name">
+          </div>
+          
+          <div class="form-group">
+            Module description:<br>
+            <textarea class="form-control" rows="8" cols="auto" placeholder="Description" ng-model="groupDescription"></textarea>
+          </div>
+          
+          <input type="submit" value="Add Group" ng-click="addGroup()">
+          
+        </form>
+      </div>
+      <div class="col-md-4">
+        <h3>Add Student</h3>
+        Student Name: <br>
+        <form>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="studentName" placeholder="Student Name">
+          </div>
+          
+          <div class="form-group">
+            Group: <br>
+            <select ng-options="group as group.name for group in groups track by group.name" ng-model="addStudentGroupName" class="form-control">
+            </select>      
+          </div>
+          
+          <input type="submit" value="Add Student" ng-click="addStudent()">
+          
+        </form>
+      </div>
+      <div class="col-md-4">
+        <h3>Add Task</h3>
+        Task: <br>
+        <form>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="addTask" placeholder="Task">
+          </div>
+          
+          <div class="form-group">
+            Group: <br>
+            <select ng-options="group as group.name for group in groups track by group.name" ng-model="addTaskGroupName" class="form-control">
+            </select>      
+          </div>
+          
+          <input type="submit" value="Add Task" ng-click="addTaskFunction()">
+          
+        </form>
+      </div>
+      
+    </div><!-- end row --> <br> <br>
+    
+    <!-- start groups -->
+    <h2>{{numberOfGroups()}} group(s): <small>click on student name or task to remove it</small></h2>
+    <div class="row">
+      
+      <div class="col-xs-12">
+        <div ng-repeat="group in groups">
+          <div class="row">
+            <div class="col-md-2">
+              <strong>Group name:</strong> <br>
+              <strong>Description:</strong> <br>
+              <strong>{{group.members.length}} Member(s):</strong> <br>
+              <strong>Task(s):</strong> <br>
+              {{remainingTasks(group.id)}} of {{group.tasks.length}} remaining <br>
+              
+              <!-- <select ng-options="groups as member for member in group.members track by member.name" ng-model="deleteStudent" class="form-control">
+            </select> -->
+            
+            <input type="button" ng-click="deleteGroup(group)" value="delete group"> <br> <br>
+          </div> 
+          <div class="col-md-10">
+            {{group.name}}
+            <br>
+            {{group.description}}
+            <br>
+            <!-- {{group.members.join(", ")}} -->
+            <span ng-repeat="member in group.members">
+              <a href="" ng-click="deleteMember(group.id, member)">{{member}}</a> 
+            </span>
+            
+            <ul type="none">
+              <li ng-repeat="(key, task) in group.tasks">
+                <input type="checkbox" ng-model="task.done">
+                
+                <!-- <select>
+                <option ng-repeat="task in group.tasks" value="{{task.assignedTo}}" >{{task.assignedTo}}</option>
+              </select> -->
+              
+              <select ng-init="peep = task.assignedTo" ng-model="peep" value="peep" ng-options="task.assignedTo for task in group.tasks" value="peep">
+            </select>
+            
+            <!-- <select ng-init="peep = task.assignedTo" ng-model="peep" ng-options="task.assignedTo for task in group.tasks" value="task.assignedTo">
+          </select> -->
+          
+          <!--   <select ng-init="peep = task.assignedTo" ng-model="peep" ng-options="groups as member for member in group.members track by member.name" value="task.assignedTo">
+        </select> -->
+        
+        <span class="done-{{task.done}}"><a href="" ng-click="deleteTask(group.id, task.description)"> is assigned to {{task.description}}
+          
+          <!-- {{task.assignedTo}} -->
+          
+        </a></span>
+      </li>
+    </ul>      
+  </div>
+  
+  
+  <br> <br>
+  
+</div>
+</div>
+</div>  
+
+</div><!-- end row -->
+<br> <br>
+
+</div>
+
+<script src=midterm-manager.js></script>
+</body>
+</html>

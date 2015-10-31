@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+</head>
+<body ng-init="people=[{name: 'Christoph', age: 25}, {name: 'Paris', age: 22}, {name: 'Bobby', age: 25}]">
+  
+  <!-- add this input -->
+  <input type="text" ng-model="search">
+  
+  <ul>
+    <!-- add `| filter: search` -->
+    <li ng-repeat="person in people | filter: search">
+      {{person.name}} is {{person.age}}
+    </li>
+  </ul>
+  
+</body>
+</html>

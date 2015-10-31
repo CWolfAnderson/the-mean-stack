@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp">
+<head>
+  <meta charset="UTF-8">
+  <title>controller as</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  
+</head>
+<!-- TODO: add `as dirList`  -->
+<body ng-controller="directoryController as dirList">
+  
+    Search: <input type="text" ng-model="search">
+  
+  <ul>
+    <!-- order matters in the `ng-repeat` -->
+    <li ng-repeat="person in dirList.people | filter: search | limitTo: 3 | orderBy: '-age'">
+      {{person.name}} is {{person.age | currency: "&yen;": 4}}
+    </li>
+  </ul>
+  
+  <form ng-submit="dirList.addPerson()">
+    <input type="text" placeholder="Name" ng-model="dirList.name">
+    <input type="number" placeholder="Age" ng-model="dirList.age">
+    <input type="submit" value="Submit">
+  </form>
+  
+  <script>
+  var myApp = angular.module('directoryApp', []);
+  
+  myApp.controller('directoryController', function() {
+    // TODO: remove `$scope` from parameter
+    
+    // TODO: set `dirList` = this
+    var dirList = this; // refers to controller
+    
+    // TODO: remove $scope from everything and replace it with `dirList`
+    dirList.people = [{name: 'Christoph', age: 25}, {name: 'Paris', age: 22}, {name: 'Bobby', age: 25}];
+    
+    dirList.addPerson = function () {
+      dirList.people.push({name: dirList.name, age: dirList.age});
+      
+      // reset variables
+      dirList.name = "";
+      dirList.age = "";
+    };
+    
+  });
+  
+  </script>
+  
+</body>
+</html>

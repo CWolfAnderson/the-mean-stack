@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <base href="/"> <!-- sets this page as '/' -->
+  
+  <title>Numbers API App</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+  
+  <script src="js/app.js"></script>
+  <script src="js/fact/fact.controller.js"></script>
+  <script src="js/fact/fact.service.js"></script>
+  <script src="js/fact/file.controller.js"></script>
+  
+</head>
+<body ng-app="app">
+  <div class="container">
+    <nav class="navbar navbar-inverse nav-fixed-top">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Numbers APP</a>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/file">File</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+    
+    <div ng-view></div>
+    
+  </div>
+  
+  
+</body>
+</html>

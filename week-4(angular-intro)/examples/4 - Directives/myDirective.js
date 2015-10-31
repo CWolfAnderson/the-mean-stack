@@ -7,4 +7,3 @@ angular.module('myApp', [])
      template: '<a href="https://github.com/cydneymikel/CS454">Click me to go to the CS 454 Homepage</a>'
    };
  });
-

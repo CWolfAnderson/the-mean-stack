@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp">
+<head>
+  <meta charset="UTF-8">
+  <title>controller</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  
+</head>
+<body ng-controller="directoryController">
+  
+  <ul>
+    <li ng-repeat="person in people">
+      {{person.name}} is {{person.age}}
+    </li>
+  </ul>
+  
+  <script>
+  var myApp = angular.module('directoryApp', []);
+  
+  myApp.controller('directoryController', function($scope) {
+    $scope.people = [{name: 'Christoph', age: 25}, {name: 'Paris', age: 22}, {name: 'Bobby', age: 25}];
+  });
+  
+  </script>
+  
+</body>
+</html>
