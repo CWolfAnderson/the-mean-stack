@@ -1,0 +1,2 @@
+Retrieve All shows matching a query
+/api/shows?query

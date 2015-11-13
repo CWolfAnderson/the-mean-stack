@@ -2,3 +2,4 @@
 
 // in any angular variable (i.e. {{name}} or {{age}}) you can upper/lowercase them with a pipe (i.e. {{name | lowercase}} or {{price | currency}})
 // you can specify currency with color (i.e. {{price | currency: "$yen;":0}})
+
