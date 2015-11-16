@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character</title>
+</head>
+<body>
+  
+  <div class="container">
+    <h2>{{character.name}}</h2>
+    <!-- ng-bind-html makes it so if you get html it will display as html -->
+    <!-- you may have to add a filter to app.js -->
+    <p ng-bind-html="{{character.description | trustHTML}}"></p>
+    <!-- trustHTML will pass in character.description as 'text' -->
+  </div>
+  
+</body>
+</html>
