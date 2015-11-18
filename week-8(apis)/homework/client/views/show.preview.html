@@ -1,0 +1,12 @@
+<div ng-if="show" class="col-md-7 show-block">
+
+    <div>
+      <h2>{{show.name}}</h2>
+      <img ng-src="{{show.image.small_url}}" alt="superhero">
+      <p>{{show.deck}}</p>
+      <a href="/show/{{show.id}}" class="btn btn-warning">
+        Details
+      </a>
+    </div>
+
+</div>

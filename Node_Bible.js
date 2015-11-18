@@ -20,11 +20,24 @@ i.e.
 "scripts": {
 "test": "echo \"Error: no test specified\" && exit 1"
 },
-"author": "ChristophWolfAnderson",
+"author": "Christoph Wolf Anderson",
 "license": "MIT"
 }
 */
+
 // ————————————————————————————————————————————————————————————————————————
+// Install/uninstall node packages
+// ————————————————————————————————————————————————————————————————————————
+/*
+1. navigate to folder in terminal
+2. ‘npm install **moduleName** --save
+
+`--save` flag will add your module as a dependency in package.json
+
+uninstall: ‘npm uninstall **moduleName’ --save
+*/
+// ————————————————————————————————————————————————————————————————————————
+
 // To ‘export’ variables:
 // ————————————————————————————————————————————————————————————————————————
 // in .js file:
@@ -52,26 +65,39 @@ module.exports = {
 // now printAvatar, printChappie, and favAnimal can be accessed in app.js
 
 // ————————————————————————————————————————————————————————————————————————
-// Install/uninstall node packages
-// ————————————————————————————————————————————————————————————————————————
-/*
-1. navigate to folder in terminal
-2. ‘npm install **moduleName** --save
-
-uninstall: ‘npm uninstall **moduleName’ --save
-*/
-// ————————————————————————————————————————————————————————————————————————
-
-// node cli.js —trivia 35000 —save
-// use yargs and super agent
-
-// ————————————————————————————————————————————————————————————————————————
 // Display file directory:
 // ————————————————————————————————————————————————————————————————————————
 console.log(__filename);
 // ————————————————————————————————————————————————————————————————————————
-
+// Create routes:
 // ————————————————————————————————————————————————————————————————————————
+// in app.js:
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res) {
+  res.send('<h1>Hello</h1> Express');
+});
+
+app.get('/me', function(req, res) {
+  res.send('The Wolf');
+});
+
+app.get('/who/:name', function(req, res) {
+  var name = req.params.name;
+  res.send(name + ' was here');
+});
+
+app.get('/who/:name?/:title?', function(req, res) {
+  var name = req.params.name;
+  var title = req.params.title;
+  res.send('<p>Name: ' + name + '<br>Title: ' + title + '</p>');
+});
+
+// for all other routes
+app.get('*', function(req, res) {
+  res.send('Bad Route');
+});
 
 // ————————————————————————————————————————————————————————————————————————
 

@@ -3,7 +3,7 @@ var superagent = require('superagent');
 
 module.exports = function(app) {
   
-  // create a route
+  // create a route (.get(), .query(), .save(), .remove(), and delete() are part of the resource class object)
   app.get('/api/character/search', function (req, res) {
     superagent
     // get config file and put in url here
@@ -32,7 +32,7 @@ module.exports = function(app) {
     .query({format: 'json'})
     .query({api_key: config.comicvine.key})
     // use 'description' because we will write a custom filter
-    .query({field_list: 'id, name, image, description'})
+    .query({field_list: 'id,name,image,description'})
     .end(function(err, result) {
       // if you don't add .results the api gives you additional details
       res.json(result.body.results);
