@@ -24,27 +24,22 @@
     </div>
     
     <!-- ng-if to display more results if there are more -->
-    <div ng-if="shows.length"  class="more-results-block">
+    <div ng-if="shows.length" class="more-results-block">
       <p>
         Search results:
       </p>
       <hr/>
       
-      <div ng-repeat="show in shows">
+      <div ng-repeat="index in shows">
         <div class="row">
-          <div class="col-md-12">
-            <h2>{{show.name}}</h2>
-            <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
-            <!-- <p>{{show.summary}}</p> -->
-            <!-- <a href="/show/{{show.id}}" class="btn btn-warning">
-            Details
-          </a> -->
-          <p ng-bind-html="show.summary | trustHTML"="{{show.summary}}"></p>      
+          <div class="col-md-12 show-container">
+            <img ng-src="{{index.show.image.medium}}" alt="{{index.show.name}}" class="show-img">
+            <h2>{{index.show.name}}</h2>
+          <p ng-bind-html="index.show.summary | trustHTML"="{{index.show.summary}}"></p>      
         </div>
       </div>      
     </div>
   </div>
-  
   
   <div class="col-md-1"></div>
   

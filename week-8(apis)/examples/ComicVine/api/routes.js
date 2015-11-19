@@ -9,7 +9,7 @@ module.exports = function(app) {
     // get config file and put in url here
     .get(config.comicvine.url + '/characters')
     // to filter based on superhero name
-    .query({ filter: 'name:' + req.query.name})
+    .query({filter: 'name:' + req.query.name})
     // format in json
     .query({format: 'json'})
     // must give api your key in order to work
