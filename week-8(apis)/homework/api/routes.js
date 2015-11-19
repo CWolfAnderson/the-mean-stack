@@ -8,20 +8,12 @@ module.exports = function(app) {
     superagent
     // get config file and put in url here
     .get(config.tvmaze.url + '/shows')
-    // to filter based on superhero name
-    .query({ filter: 'name:' + req.query.name})
-    // format in json
-    .query({format: 'json'})
-    // must give api your key in order to work
-    // .query({api_key: config.tvmaze.key})
-    // limit to 4 responses
-    .query({limit: 4})
-    // limit certain fields (must be list w/o spaces)
-    .query({field_list: 'id,name,image,deck'})
+    // to filter based on show name
+    .query({q: 'name:' + req.query.name})
     .end(function(err, result) {
       // use .results because the array is the value of the results property
-      res.json(result.body.results);
-    });  
+      res.json(result.body);
+    });
   });
   
   // handle other routes

@@ -20,6 +20,7 @@ angular.module('search.controller', [])
 .controller('SearchController', function ($scope, SearchService) {
 	// $scope.hello = 'Hello World';
 	$scope.search = function() {
+		
 		// we use .query because we are expecting an array back (.get only gets an object)
 		SearchService.query({name: $scope.name}, function(response) {
 			// $scope.shows = response;

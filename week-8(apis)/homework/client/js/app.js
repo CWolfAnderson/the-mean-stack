@@ -11,13 +11,12 @@ angular.module('app', ['ngRoute', 'ngResource', 'search.controller', 'search.ser
 
 .config(['$routeProvider', '$locationProvider', 
 function ($routeProvider, $locationProvider) {
-  
+
   $routeProvider
   .when('/', {
     templateUrl: 'views/search.html',
     controller: 'SearchController'
   })
-  
   // handle show pages
   .when('/show/:id', {
     templateUrl: 'views/show.html',

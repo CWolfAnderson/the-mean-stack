@@ -2,7 +2,7 @@ var config = require('../config.json');
 var superagent = require('superagent');
 
 module.exports = function(app) {
-  
+
   // create a route (.get(), .query(), .save(), .remove(), and delete() are part of the resource class object)
   app.get('/api/character/search', function (req, res) {
     superagent
