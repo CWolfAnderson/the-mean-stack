@@ -10,7 +10,7 @@
           <div class="input-group">
             <input type="text" class="form-control input-md" ng-model="name" />
             <span class="input-group-btn">
-              <button type="submit" class="btn btn-md btn-primary pull-right"   ng-click="search()">
+              <button type="submit" class="btn btn-md btn-primary pull-right" ng-click="search()">
                 search
               </button>
             </span>
@@ -20,32 +20,38 @@
             <em>No results found</em>
           </p>
         </form>
-        
-        <!-- ng-if to display more results if there are more -->
-        <div ng-if="shows.alternatives.length"  class="more-results-block">
-          <p>
-            More results:
-            <hr/>
-          </p>
-          <div>
-            <p ng-repeat="alt in shows.alternatives">
-              <a style="cursor: pointer" class="h5" ng-click="shows.main = alt">
-                <!-- ng-click="shows.main = alt" changes the image -->
-                {{alt.name}}
-              </a>
-            </p>
-          </div>
+      </div>
+    </div>
+    
+    <!-- ng-if to display more results if there are more -->
+    <div ng-if="shows.length"  class="more-results-block">
+      <p>
+        Search results:
+      </p>
+      <hr/>
+      
+      <div ng-repeat="show in shows">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>{{show.name}}</h2>
+            <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
+            <!-- <p>{{show.summary}}</p> -->
+            <!-- <a href="/show/{{show.id}}" class="btn btn-warning">
+            Details
+          </a> -->
+          <p ng-bind-html="show.summary | trustHTML"="{{show.summary}}"></p>      
         </div>
-        
-      </div>
-      
-      <div class="col-md-1"></div>
-      
-      <!-- 'show' has to match up with scope variable in search.controller.js -->
-      <div show-preview show="shows.main"><!-- matches with showPreview (angular takes care of the dash for you)-->
-        
-      </div>
-      
+      </div>      
     </div>
   </div>
+  
+  
+  <div class="col-md-1"></div>
+  
+  <!-- 'show' has to match up with scope variable in search.controller.js -->
+  <div show-preview show="shows.main"><!-- matches with showPreview (angular takes care of the dash for you)-->
+    
+  </div>
+  
+</div>
 </div>

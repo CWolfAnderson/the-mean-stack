@@ -2,7 +2,7 @@
   <h2>{{show.name | uppercase}}</h2>
   <!-- ng-bind-html makes it so if you get html it will display as html -->
   <!-- you may have to add a filter to app.js -->
-  <p ng-bind-html="show.description | trustHTML"></p>
+  <p ng-bind-html="show.summary | trustHTML"></p>
   <!-- trustHTML will pass in show.description as 'text' -->
 
   <!-- <p>

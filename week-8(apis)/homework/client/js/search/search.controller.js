@@ -23,16 +23,14 @@ angular.module('search.controller', [])
 		
 		// we use .query because we are expecting an array back (.get only gets an object)
 		SearchService.query({name: $scope.name}, function(response) {
-			// $scope.shows = response;
 			
-			// to be able to get the first element of the array (superhero) we use response[0]
-			// $scope.shows = {main: response[0], alternatives: response};
+			$scope.shows = response;
 			
-			if (response.length) {
-				$scope.shows = {main: response[0], alternatives: response};
-			} else {
-				$scope.shows = response;
-			}
+			// if (response.length) {
+			// 	$scope.shows = {main: response[0], alternatives: response};
+			// } else {
+			// 	$scope.shows = response;
+			// }
 
 		});
 	};
