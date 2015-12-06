@@ -35,18 +35,23 @@
           <div class="col-md-12 show-container">
             <img ng-src="{{index.show.image.medium}}" alt="{{index.show.name}}" class="show-img">
             <h2>{{index.show.name}}</h2>
-          <p ng-bind-html="index.show.summary | trustHTML"="{{index.show.summary}}"></p>      
-        </div>
-      </div>      
+            <p ng-bind-html="index.show.summary | trustHTML"="{{index.show.summary}}"></p>
+            
+            <button type="button" class="btn btn-info btn-details" ng-click="getShow(index.show.id)">
+              Details
+            </button>
+            
+          </div>
+        </div>      
+      </div>
     </div>
-  </div>
-  
-  <div class="col-md-1"></div>
-  
-  <!-- 'show' has to match up with scope variable in search.controller.js -->
-  <div show-preview show="shows.main"><!-- matches with showPreview (angular takes care of the dash for you)-->
+    
+    <div class="col-md-1"></div>
+    
+    <!-- 'show' has to match up with scope variable in search.controller.js -->
+    <div show-preview show="shows.main"><!-- matches with showPreview (angular takes care of the dash for you)-->
+      
+    </div>
     
   </div>
-  
-</div>
 </div>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <title>Brick-Buster</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  
+  <div class="container">
+    
+    <img src="img/chick.png" alt="chick" id="player">
+    <br><br>
+    <div id="target"></div>
+    
+  </div>
+  
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  
+  <script>
+  
+  // hide target
+  var randX = Math.floor(Math.random() * (1000 - 0 + 1)) + 0;
+  var randY = Math.floor(Math.random() * (500 - 0 + 1)) + 0;
+  
+  console.log(randX + " " + randY);
+  
+  $("#target").css("top", randY);
+  $("#target").css("left", randX);
+  
+  console.log($("#target").position());
+  
+  var socket = io();
+  
+  $(document).on("keydown", function(event) {
+    socket.emit('player move', event.which);
+  });
+  
+  socket.on('player move', function(direction){
+    
+    if (direction === 37) { // left
+      var currLeft = $("#player").position().left;
+      $("#player").css("left", (currLeft - 11));
+      // console.log("move left");
+    } else if (direction === 38) { // up
+      var currTop = $("#player").position().top;
+      $("#player").css("top", (currTop - 11));
+      // console.log("move up");
+    } else if (direction === 39) { // right
+      var currLeft = $("#player").position().left;
+      $("#player").css("left", (currLeft + 11));
+      // console.log("move right");
+    } else if (direction === 40) { // down
+      var currTop = $("#player").position().top;
+      $("#player").css("top", (currTop + 11));
+      // console.log("move down");
+    }
+    
+    // check if player found target
+    var player = $("#player").position();
+    var target = $("#target").position();
+    if (player.left <  target.left + 100 && 
+      player.left + 150 > target.left && 
+      player.top + 150 > target.top &&
+      player.top < target.top + 100
+    ) {
+      $("#target").css("backgroundColor", "red");
+      alert("You found me!");
+      // console.log("You found me!");
+    }
+    
+  });
+  
+  var images = [
+    "chick.png", "puppy.jpg", "bat.jpg", "beaver.jpg", "bunny.jpg", "cat.jpg", "chimp.jpg", "hippo.jpg", "owl.jpg", "rhino.jpg"
+  ];
+  
+  $("#player").click(function() {
+    var randomNumber = Math.floor(Math.random() * images.length);
+    socket.emit('change image', "img/" + images[randomNumber]);
+  });
+  
+  socket.on('change image', function(image){
+    $("#player").attr("src", image);
+    // console.log("changed image");
+  });
+  
+  </script>
+  
+</body>
+</html>

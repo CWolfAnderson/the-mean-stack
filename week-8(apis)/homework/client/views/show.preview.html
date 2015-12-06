@@ -1,12 +1,12 @@
-<div ng-if="show" class="col-md-7 show-block">
+<div ng-if="show" class="col-md-6 show-block">
 
     <div>
       <h2>{{show.name}}</h2>
       <img ng-src="{{show.image.medium}}" alt="show">
       <!-- <p>{{show.summary}}</p> -->
-      <!-- <a href="/show/{{show.id}}" class="btn btn-warning">
+      <a href="/show/{{show.id}}" class="btn btn-warning">
         Details
-      </a> -->
+      </a>
       <p ng-bind-html="show.summary | trustHTML"="{{show.summary}}"></p>      
     </div>
 

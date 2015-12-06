@@ -5,9 +5,6 @@ module.exports = function(app) {
   
   // create a route (.get(), .query(), .save(), .remove(), and delete() are part of the resource class object)
   app.get('/search/shows', function (req, res) {
-    // console.log(req);
-    // console.log(req.query);
-    // console.log(req.query.name);
     
     superagent
     // get config file and put in url here
@@ -16,18 +13,30 @@ module.exports = function(app) {
     
     // to filter based on show name
     .query({q: req.query.name})
-        
+    
+    .end(function(err, result) {
+                  
+      res.json(result.body);
+      
+    });
+  });
+  
+  // handle show details
+  app.get('/shows/:id', function(req, res) {
+    superagent    
+    
+    .get(config.tvmaze.url + '/shows/' + req.params.id + '\?embed=cast')
+    
     .end(function(err, result) {
       
-      // console.log(result.body);
-
-      // use .results because the array is the value of the results property
+      if (err) console.log(err);
       
       // console.log(result.body);
       
       res.json(result.body);
       
     });
+    
   });
   
 };

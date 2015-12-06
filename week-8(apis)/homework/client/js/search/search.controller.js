@@ -17,7 +17,7 @@ angular.module('search.controller', [])
 	};
 })
 // parameters in function used to inject dependencies
-.controller('SearchController', function ($scope, SearchService) {
+.controller('SearchController', function ($scope, SearchService, $location) {
 	// $scope.hello = 'Hello World';
 	$scope.search = function() {
 		
@@ -26,12 +26,14 @@ angular.module('search.controller', [])
 			
 			$scope.shows = response;
 			
-			// if (response.length) {
-			// 	$scope.shows = {main: response[0], alternatives: response};
-			// } else {
-			// 	$scope.shows = response;
-			// }
-
 		});
 	};
+	
+	$scope.getShow = function(showId) {
+		console.log("Called getShow()");
+		// redirect
+		$location.path('show/' + showId);
+		
+	};
+	
 });

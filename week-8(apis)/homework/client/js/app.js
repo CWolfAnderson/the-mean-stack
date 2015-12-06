@@ -9,9 +9,8 @@ angular.module('app', ['ngRoute', 'ngResource', 'search.controller', 'search.ser
   };
 })
 
-.config(['$routeProvider', '$locationProvider', 
-function ($routeProvider, $locationProvider) {
-
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+  
   $routeProvider
   .when('/', {
     templateUrl: 'views/search.html',

@@ -1,11 +1,49 @@
-<div class="container">
-  <h2>{{show.name | uppercase}}</h2>
-  <!-- ng-bind-html makes it so if you get html it will display as html -->
-  <!-- you may have to add a filter to app.js -->
-  <p ng-bind-html="show.summary | trustHTML"></p>
-  <!-- trustHTML will pass in show.description as 'text' -->
-
-  <!-- <p>
-    {{show.description}}
-  </p> -->
+<div class="container relative">
+  <div class="row">
+    
+    <div class="col-md-3">
+      
+      <h2>{{show.name}}</h2>
+      <ul>
+        <li data-ng-repeat="genre in show.genres" class="genre">
+          {{genre}} |
+        </li>
+      </ul>
+      
+      <img src="{{show.image.medium}}" alt="{{show.name}}">
+      
+    </div>
+    
+    <div class="col-md-9">
+      
+      <h3>Summary</h3>
+      
+      <!-- ng-bind-html makes it so if you get html it will display as html -->
+      <!-- you may have to add a filter to app.js -->
+      <p ng-bind-html="show.summary | trustHTML"></p>
+      <!-- trustHTML will pass in show.description as 'text' -->
+      
+      <h3>Cast</h3>
+      
+      <table class="table table-hover">
+        <tbody>
+          <tr ng-repeat="castMember in show._embedded.cast">
+            <td><img src="{{pictureExists(castMember.person.image.medium)}}" alt="{{castMember.person.name}}">{{castMember.person.name}} as {{castMember.character.name}}</td>
+          </tr>
+        </tbody>        
+      </table>
+      
+    </div>
+    
+  </div>
+  
 </div>
+
+<!--
+
+show.name
+show.genres (array)
+show.image.medium
+show.summary
+
+-->

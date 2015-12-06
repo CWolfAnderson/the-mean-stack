@@ -1,5 +1,5 @@
 angular.module('search.service', [])
 // make sure 'SearchService' matches 'SearchService' in search.controller.js
 .factory('SearchService', function ($resource) {		
-	return $resource('/search/shows');
+	return $resource('/search/shows/:id');
 });
